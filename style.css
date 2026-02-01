@@ -35,7 +35,8 @@ body {
     padding: 0 20px;
 }
 
-/* 导航栏样式 */
+/* ========== 导航栏修复版 ========== */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -63,16 +64,24 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--primary-color);
+    z-index: 1002;
 }
 
 .logo i {
     font-size: 1.8rem;
 }
 
+/* 隐藏复选框 */
+.menu-checkbox {
+    display: none;
+}
+
+/* PC端导航菜单 */
 .nav-menu {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-menu a {
@@ -106,20 +115,16 @@ body {
     width: 80%;
 }
 
-.menu-checkbox {
-    display: none;
-}
-
 /* 汉堡菜单样式 */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
     gap: 4px;
-    padding: 10px;  /* 增加点击区域 */
-    z-index: 1001;  /* 确保在最上层 */
-    position: relative;
-    -webkit-tap-highlight-color: transparent; /* 移除移动端点击高亮 */
+    padding: 8px;
+    z-index: 1001;
+    background: transparent;
+    border: none;
 }
 
 .hamburger .bar {
@@ -128,9 +133,124 @@ body {
     background: var(--dark-color);
     border-radius: 2px;
     transition: var(--transition);
-    transform-origin: center; /* 确保旋转中心点正确 */
 }
 
+/* ========== 移动端菜单样式 ========== */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        position: relative;
+    }
+    
+    /* 移动端导航菜单 */
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 30px 0;
+        gap: 0;
+        z-index: 1000;
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0;
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.4s ease;
+    }
+    
+    /* 复选框被选中时的菜单状态 */
+    .menu-checkbox:checked ~ .nav-menu {
+        left: 0;
+    }
+    
+    .menu-checkbox:checked ~ .nav-menu li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    /* 菜单项延迟动画 */
+    .menu-checkbox:checked ~ .nav-menu li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+    
+    .menu-checkbox:checked ~ .nav-menu li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+    
+    .menu-checkbox:checked ~ .nav-menu li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+    
+    .menu-checkbox:checked ~ .nav-menu li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+    
+    /* 汉堡菜单动画 */
+    .menu-checkbox:checked ~ .hamburger .bar:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .menu-checkbox:checked ~ .hamburger .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-checkbox:checked ~ .hamburger .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    /* 移动端菜单链接样式 */
+    .nav-menu a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        color: var(--dark-color);
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 0 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu a:hover {
+        background: rgba(67, 97, 238, 0.1);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+}
+
+/* 小屏幕手机优化 */
+@media (max-width: 480px) {
+    .nav-menu {
+        top: 60px;
+        height: calc(100vh - 60px);
+        padding: 20px 0;
+    }
+    
+    .nav-menu a {
+        padding: 12px 15px;
+        font-size: 1rem;
+        margin: 0 15px;
+    }
+    
+    .hamburger {
+        padding: 6px;
+    }
+    
+    .nav-container {
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* ========== 页面内容区域 ========== */
 
 /* Hero区域 */
 .hero {
@@ -580,7 +700,7 @@ body {
     opacity: 0.6;
 }
 
-/* 关键帧动画定义 */
+/* ========== 关键帧动画定义 ========== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -654,77 +774,45 @@ body {
     }
 }
 
-/* 移动端菜单样式 */
+/* 响应式设计补充 */
 @media (max-width: 768px) {
-    /* 显示汉堡菜单 */
-    .hamburger {
-        display: flex;
+    .hero-title {
+        font-size: 2.5rem;
     }
     
-    /* 默认隐藏导航菜单 */
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        text-align: center;
-        transition: 0.4s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        padding: 30px 0;
-        gap: 0;
-        z-index: 1000;
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
-    /* 选中复选框时显示菜单 */
-    .menu-checkbox:checked ~ .nav-menu {
-        left: 0;
+    .section-header h2 {
+        font-size: 2rem;
     }
     
-    /* 汉堡菜单动画效果 */
-    .menu-checkbox:checked ~ .hamburger .bar:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+    .animation-grid {
+        grid-template-columns: 1fr;
     }
     
-    .menu-checkbox:checked ~ .hamburger .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .menu-checkbox:checked ~ .hamburger .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-    }
-    
-    /* 菜单项样式 */
-    .nav-menu li {
-        margin: 15px 0;
-    }
-    
-    .nav-menu a {
-        display: block;
-        padding: 15px 20px;
-        font-size: 1.1rem;
-        margin: 0 20px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-    }
-    
-    .nav-menu a:hover {
-        background: rgba(67, 97, 238, 0.1);
-        transform: translateY(-2px);
+    .tech-content {
+        grid-template-columns: 1fr;
     }
 }
 
-/* 小屏幕优化 */
 @media (max-width: 480px) {
-    .nav-menu {
-        top: 60px;
-        padding: 20px 0;
+    .hero-title {
+        font-size: 1.8rem;
     }
     
-    .hamburger {
-        padding: 8px;
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
+    }
+    
+    .animation-card {
+        padding: 20px;
+    }
+    
+    .hero {
+        padding: 80px 15px 30px;
     }
 }
 
@@ -735,7 +823,8 @@ body {
     .animation-demo,
     .loader,
     .performance-bar,
-    .gradient-border {
+    .gradient-border,
+    .hamburger {
         display: none !important;
     }
     
@@ -751,5 +840,10 @@ body {
     
     .cta-button {
         display: none;
+    }
+    
+    .navbar {
+        position: static;
+        background: white !important;
     }
 }
