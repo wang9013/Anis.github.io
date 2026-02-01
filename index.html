@@ -3,283 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS3动画设计展示 - 毕业设计</title>
-    <link rel="stylesheet" href="./毕设1css.css">
-    <link rel="stylesheet" href="./毕设2css.css">
+    <title>基于HTML5与CSS3的网页动画设计与实现</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- 页面加载动画 -->
-    <div class="loader">
-        <div class="loader-circle"></div>
-        <div class="loader-text">加载中...</div>
-    </div>
-
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-text">CSS3动画</span>
-                <div class="logo-dot"></div>
+                <i class="fas fa-code"></i>
+                <span>王润泽
+                </span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">首页</a></li>
-                <li><a href="#animations" class="nav-link">动画展示</a></li>
-                <li><a href="#techniques" class="nav-link">技术原理</a></li>
-                <li><a href="#examples" class="nav-link">案例演示</a></li>
-                <li><a href="#about" class="nav-link">关于项目</a></li>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#animation">动画展示</a></li>
+                <li><a href="#technology">技术解析</a></li>
+                <li><a href="#about">关于项目</a></li>
             </ul>
-            <div class="theme-toggle">
-                <i class="fas fa-moon"></i>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </nav>
 
-    <!-- 主内容区 -->
-    <main class="main-content">
-        <!-- 首页区域 -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="title-word title-word-1">基于</span>
-                    <span class="title-word title-word-2">HTML5</span>
-                    <span class="title-word title-word-3">与</span>
-                    <span class="title-word title-word-4">CSS3</span>
-                    <span class="title-word title-word-5">的网页动画</span>
-                </h1>
-                <p class="hero-subtitle">探索现代网页动画的无限可能</p>
-                <div class="hero-buttons">
-                    <a href="#animations" class="btn btn-primary">查看动画</a>
-                    <a href="#techniques" class="btn btn-secondary">学习技术</a>
+    <!-- 首页Hero区域 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">基于<span class="highlight">HTML5</span>与<span class="highlight">CSS3</span>的网页动画设计</h1>
+            <p class="hero-subtitle">探索现代网页动画的无限可能 - 纯CSS实现，全设备适配</p>
+            <a href="#animation" class="cta-button">探索动画效果</a>
+        </div>
+        <div class="hero-animation">
+            <div class="floating-shape shape1"></div>
+            <div class="floating-shape shape2"></div>
+            <div class="floating-shape shape3"></div>
+        </div>
+    </section>
+
+    <!-- 动画展示区域 -->
+    <section id="animation" class="animation-showcase">
+        <div class="section-header">
+            <h2>CSS3动画核心技术展示</h2>
+            <p>三大核心模块 - Transition, Transform, Animation</p>
+        </div>
+        
+        <div class="animation-grid">
+            <!-- Transition动画 -->
+            <div class="animation-card">
+                <div class="card-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>过渡动画 (Transition)</h3>
+                <div class="demo-box">
+                    <div class="transition-demo">
+                        <div class="transition-box"></div>
+                    </div>
+                </div>
+                <p>元素状态平滑过渡，实现自然的交互反馈</p>
+                <div class="code-snippet">
+                    <code>transition: all 0.3s ease;</code>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                    <div class="shape shape-4"></div>
+            
+            <!-- Transform动画 -->
+            <div class="animation-card">
+                <div class="card-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>变换动画 (Transform)</h3>
+                <div class="demo-box">
+                    <div class="transform-demo">
+                        <div class="transform-box">3D</div>
+                    </div>
+                </div>
+                <p>位移、旋转、缩放、倾斜，创造3D视觉效果</p>
+                <div class="code-snippet">
+                    <code>transform: rotate(45deg) scale(1.2);</code>
                 </div>
             </div>
-        </section>
-
-        <!-- 动画展示区域 -->
-        <section id="animations" class="section">
-            <h2 class="section-title">CSS3动画效果展示</h2>
-            <div class="animation-grid">
-                <!-- 过渡动画卡片 -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3>过渡动画 (Transition)</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="demo-box">
-                            <div class="transition-demo">
-                                <div class="transition-square"></div>
-                                <p>悬停查看过渡效果</p>
-                            </div>
-                        </div>
-                        <p class="card-description">
-                            使用CSS3 transition属性实现平滑的状态变化效果
-                        </p>
+            
+            <!-- Keyframe动画 -->
+            <div class="animation-card">
+                <div class="card-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>关键帧动画 (Keyframes)</h3>
+                <div class="demo-box">
+                    <div class="keyframe-demo">
+                        <div class="keyframe-box"></div>
                     </div>
                 </div>
-
-                <!-- 变换动画卡片 -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3>变换动画 (Transform)</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="demo-box">
-                            <div class="transform-demo">
-                                <div class="transform-cube">
-                                    <div class="cube-face front">前</div>
-                                    <div class="cube-face back">后</div>
-                                    <div class="cube-face left">左</div>
-                                    <div class="cube-face right">右</div>
-                                    <div class="cube-face top">上</div>
-                                    <div class="cube-face bottom">下</div>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="card-description">
-                            使用transform实现2D/3D变换效果
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 关键帧动画卡片 -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3>关键帧动画 (Keyframes)</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="demo-box">
-                            <div class="keyframe-demo">
-                                <div class="bouncing-ball"></div>
-                                <div class="ball-shadow"></div>
-                            </div>
-                        </div>
-                        <p class="card-description">
-                            使用@keyframes创建复杂的动画序列
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 交互反馈动画 -->
-                <div class="animation-card">
-                    <div class="card-header">
-                        <h3>交互反馈动画</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="demo-box">
-                            <button class="interactive-btn">
-                                <span class="btn-icon">✓</span>
-                                <span class="btn-text">点击体验</span>
-                                <span class="btn-wave"></span>
-                            </button>
-                        </div>
-                        <p class="card-description">
-                            为用户操作提供即时视觉反馈
-                        </p>
-                    </div>
+                <p>定义复杂动画序列，实现多阶段动态效果</p>
+                <div class="code-snippet">
+                    <code>@keyframes slide { 0% { left: 0; } 100% { left: 100%; } }</code>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <!-- 综合动画示例 -->
+        <div class="complex-animation">
+            <h3>综合动画示例：加载动画</h3>
+            <div class="loader">
+                <div class="loader-dot dot1"></div>
+                <div class="loader-dot dot2"></div>
+                <div class="loader-dot dot3"></div>
+            </div>
+            <p class="demo-desc">纯CSS实现的流畅加载动画，支持响应式适配</p>
+        </div>
+    </section>
 
-        <!-- 技术原理区域 -->
-        <section id="techniques" class="section dark-section">
-            <h2 class="section-title">核心技术原理</h2>
-            <div class="technique-container">
-                <div class="technique-item">
-                    <div class="technique-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>过渡 Transition</h3>
-                    <p>控制CSS属性值变化的速度曲线，实现平滑的状态切换</p>
-                    <div class="code-snippet">
-                        <pre><code>.element {
-  transition: all 0.3s ease;
-}</code></pre>
-                    </div>
+    <!-- 技术解析区域 -->
+    <section id="technology" class="technology-section">
+        <div class="section-header">
+            <h2>技术解析与实现原理</h2>
+            <p>深入探索CSS3动画的核心机制与性能优化</p>
+        </div>
+        
+        <div class="tech-content">
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
                 </div>
-
-                <div class="technique-item">
-                    <div class="technique-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>变换 Transform</h3>
-                    <p>实现元素的旋转、缩放、倾斜和位移等几何变换</p>
-                    <div class="code-snippet">
-                        <pre><code>.element {
-  transform: rotate(45deg) scale(1.2);
-}</code></pre>
-                    </div>
-                </div>
-
-                <div class="technique-item">
-                    <div class="technique-icon">
-                        <i class="fas fa-film"></i>
-                    </div>
-                    <h3>关键帧动画</h3>
-                    <p>通过定义关键帧序列创建复杂的自定义动画</p>
-                    <div class="code-snippet">
-                        <pre><code>@keyframes slideIn {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}</code></pre>
-                    </div>
+                <h4>响应式设计</h4>
+                <p>使用媒体查询和相对单位，确保动画在不同设备上完美呈现</p>
+                <div class="responsive-demo">
+                    <div class="device-mockup mobile"></div>
+                    <div class="device-mockup tablet"></div>
+                    <div class="device-mockup desktop"></div>
                 </div>
             </div>
-        </section>
-
-        <!-- 案例演示区域 -->
-        <section id="examples" class="section">
-            <h2 class="section-title">动画案例演示</h2>
-            <div class="example-container">
-                <!-- 进度条动画 -->
-                <div class="example-item">
-                    <h3>进度条动画</h3>
-                    <div class="progress-container">
-                        <div class="progress-bar">
-                            <div class="progress-fill" data-width="75%"></div>
-                        </div>
-                        <span class="progress-text">加载进度: 75%</span>
-                    </div>
+            
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-tachometer-alt"></i>
                 </div>
-
-                <!-- 卡片悬停效果 -->
-                <div class="example-item">
-                    <h3>卡片悬停效果</h3>
-                    <div class="hover-card">
-                        <div class="card-image"></div>
-                        <div class="card-content">
-                            <h4>CSS3动画卡片</h4>
-                            <p>悬停查看3D翻转效果</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 加载动画 -->
-                <div class="example-item">
-                    <h3>加载动画</h3>
-                    <div class="loading-spinner">
-                        <div class="spinner"></div>
-                        <div class="spinner-text">加载中...</div>
-                    </div>
+                <h4>性能优化</h4>
+                <p>利用硬件加速、减少重绘重排，确保动画流畅运行</p>
+                <div class="performance-demo">
+                    <div class="performance-bar"></div>
                 </div>
             </div>
-        </section>
-
-        <!-- 关于项目区域 -->
-        <section id="about" class="section dark-section">
-            <h2 class="section-title">关于此项目</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>本毕业设计项目完全基于HTML5与CSS3技术实现，展示了现代网页动画的各种可能性。项目包含以下特点：</p>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> 100%纯CSS实现，无需JavaScript</li>
-                        <li><i class="fas fa-check-circle"></i> 响应式设计，适配各种设备</li>
-                        <li><i class="fas fa-check-circle"></i> 包含过渡、变换、关键帧等多种动画类型</li>
-                        <li><i class="fas fa-check-circle"></i> 注重性能优化，使用硬件加速</li>
-                        <li><i class="fas fa-check-circle"></i> 提供完整的交互反馈体验</li>
-                    </ul>
+            
+            <div class="tech-feature">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="15">15</div>
-                        <div class="stat-label">动画效果</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="8">8</div>
-                        <div class="stat-label">交互组件</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-count="100">1467</div>
-                        <div class="stat-label">代码行数</div>
-                    </div>
+                <h4>视觉设计</h4>
+                <p>结合现代设计趋势，创造美观、实用的动画效果</p>
+                <div class="color-palette">
+                    <div class="color color1"></div>
+                    <div class="color color2"></div>
+                    <div class="color color3"></div>
+                    <div class="color color4"></div>
+                    <div class="color color5"></div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- 关于项目区域 -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <h2>关于本项目</h2>
+            <p>本项目是毕业论文《基于HTML5与CSS3的网页动画设计与实现》的实践成果，展示了纯CSS动画在现代网页设计中的应用。</p>
+            
+            <div class="project-info">
+                <div class="info-item">
+                    <strong>技术栈：</strong>
+                    <span>HTML5, CSS3 (无JavaScript)</span>
+                </div>
+                <div class="info-item">
+                    <strong>兼容性：</strong>
+                    <span>Chrome, Firefox, Safari, Edge</span>
+                </div>
+                <div class="info-item">
+                    <strong>适配设备：</strong>
+                    <span>PC, 平板, 手机</span>
+                </div>
+                <div class="info-item">
+                    <strong>核心特性：</strong>
+                    <span>响应式布局、交互动画、性能优化</span>
+                </div>
+            </div>
+            
+            <div class="gradient-border"></div>
+        </div>
+    </section>
 
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-info">
-                <h3>CSS3动画毕业设计</h3>
-                <p>基于HTML5与CSS3的网页动画设计与实现</p>
-            </div>
-            <div class="footer-links">
-                <a href="#home">首页</a>
-                <a href="#animations">动画</a>
-                <a href="#techniques">技术</a>
-                <a href="#examples">案例</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 毕业设计项目 | 仅用于学术展示</p>
+            <p>毕业设计作品 · 基于HTML5与CSS3的网页动画设计与实现</p>
+            <p>学生：王润泽 · 专业：计算机应用技术 · 指导老师：赵学朝</p>
+            <p class="footer-note">© 2025 应用科技产业学院 - 本页面使用纯CSS实现所有动画效果</p>
         </div>
     </footer>
 </body>
